@@ -23,8 +23,8 @@ import org.gradle.internal.Factory;
 import org.gradle.internal.logging.LoggingManagerInternal;
 
 public class MavenLocalPublisher extends AbstractMavenPublisher {
-    public MavenLocalPublisher(Factory<LoggingManagerInternal> loggingManagerFactory, LocalMavenRepositoryLocator mavenRepositoryLocator) {
-        super(loggingManagerFactory, mavenRepositoryLocator);
+    public MavenLocalPublisher(LocalMavenRepositoryLocator mavenRepositoryLocator) {
+        super(mavenRepositoryLocator);
     }
 
     @Override

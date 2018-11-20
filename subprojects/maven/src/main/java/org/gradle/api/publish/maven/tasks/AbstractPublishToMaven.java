@@ -99,11 +99,6 @@ public abstract class AbstractPublishToMaven extends DefaultTask {
     }
 
     @Inject
-    protected Factory<LoggingManagerInternal> getLoggingManagerFactory() {
-        throw new UnsupportedOperationException();
-    }
-
-    @Inject
     protected LocalMavenRepositoryLocator getMavenRepositoryLocator() {
         throw new UnsupportedOperationException();
     }

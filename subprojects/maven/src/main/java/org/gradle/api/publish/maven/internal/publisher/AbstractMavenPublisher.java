@@ -28,13 +28,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public abstract class AbstractMavenPublisher implements MavenPublisher {
-    private final Factory<LoggingManagerInternal> loggingManagerFactory;
 
     private final static Logger LOGGER = LoggerFactory.getLogger(AbstractMavenPublisher.class);
     private final LocalMavenRepositoryLocator mavenRepositoryLocator;
 
-    public AbstractMavenPublisher(Factory<LoggingManagerInternal> loggingManagerFactory, LocalMavenRepositoryLocator mavenRepositoryLocator) {
-        this.loggingManagerFactory = loggingManagerFactory;
+    public AbstractMavenPublisher(LocalMavenRepositoryLocator mavenRepositoryLocator) {
         this.mavenRepositoryLocator = mavenRepositoryLocator;
     }
 
@@ -70,13 +68,6 @@ public abstract class AbstractMavenPublisher implements MavenPublisher {
     }
 
     private void execute(MavenPublishAction publishAction) {
-        LoggingManagerInternal loggingManager = loggingManagerFactory.create();
-        loggingManager.captureStandardOutput(LogLevel.INFO).start();
-        try {
-            publishAction.publish();
-        } finally {
-            loggingManager.stop();
-        }
+        publishAction.publish();
     }
-
 }
